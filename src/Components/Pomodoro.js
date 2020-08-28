@@ -30,6 +30,15 @@ export default class Pomodoro extends Component {
     currentTimer: "Session",
     isPlaying: false,
   };
+  constructor(props) {
+    super(props);
+    this.loop = undefined;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.loop);
+  }
+
 
   render() {
     const {
