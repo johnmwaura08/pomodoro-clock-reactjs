@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import styles from './Pomodoro.module.css'
+import cx from 'classnames' 
 
 const SetTimer = (props) => {
   const id = props.title.toLowerCase();
 
   return (
-    <div className="timer-container">
+    <div className={styles.timerContainer}>
       <h2 id={`${id}-label`}>{props.title} Length</h2>
-      <div className="flex actions-wrapper">
+      <div className={cx(styles.flex , styles.actionsWrapper)}>
         <button id={`${id}-decrement`} onClick={props.handleDecrease}>
           <i className="fas fa-minus" />
         </button>
@@ -20,6 +22,7 @@ const SetTimer = (props) => {
     </div>
   );
 };
+
 const audio = document.getElementById("beep");
 export default class Pomodoro extends Component {
   state = {
@@ -161,11 +164,11 @@ export default class Pomodoro extends Component {
             <SetTimer {...sessionProps} />
           </div>
 
-          <div className="clock-container">
+          <div className={styles.clockContainer}>
             <h1 id="timer-label">{currentTimer}</h1>
             <span id="time-left">{this.convertToTime(clockCount)}</span>
 
-            <div className="flex">
+            <div className={styles.flex}>
               <button id="start_stop" onClick={this.handlePlayPause}>
                 <i className={`fas fa-${isPlaying ? "pause" : "play"}`} />
               </button>
