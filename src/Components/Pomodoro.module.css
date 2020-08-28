@@ -26,3 +26,29 @@
     align-items: center;
     justify-content: center;
   }
+  .timer-container {
+    margin: -50px 20px 20px;
+  }
+  .timer-container h2 {
+    margin: 0px;
+  }
+  
+  .actions-wrapper span {
+    font-size: 40px;
+    margin: 0 10px;
+  }
+  .clock-container {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 100px;
+    display: inline-block;
+    margin-top: 2opx;
+  }
+  
+  .clock-container h1 {
+    margin: 0;
+  }
+  .clock-container span {
+    font-size: 60px;
+  }
+  
