@@ -90,6 +90,40 @@ export default class Pomodoro extends Component {
     audio.pause();
     audio.currentTime = 0;
   };
+  convertToTime = (count) => {
+    let minutes = Math.floor(count / 60);
+    let seconds = count % 60;
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    return `${minutes}:${seconds}`;
+  };
+
+  handleLengthChange = (count, timerType) => {
+    const { sessionCount, breakCount, isPlaying, currentTimer } = this.state;
+
+    let newCount;
+
+    if (timerType === "session") {
+      newCount = sessionCount + count;
+    } else {
+      newCount = breakCount + count;
+    }
+
+    if (newCount > 0 && newCount < 61 && !isPlaying) {
+      this.setState({
+        [`${timerType}Count`]: newCount
+      });
+
+      if (currentTimer.toLowerCase() === timerType) {
+        this.setState({
+          clockCount: newCount * 60
+        });
+      }
+    }
+  };
+
 
   render() {
     const {
