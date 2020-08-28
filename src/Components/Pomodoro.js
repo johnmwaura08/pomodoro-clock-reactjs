@@ -32,6 +32,28 @@ export default class Pomodoro extends Component {
   };
 
   render() {
+    const {
+        breakCount,
+        sessionCount,
+        clockCount,
+        currentTimer,
+        isPlaying
+      } = this.state;
+  
+      const breakProps = {
+        title: "Break",
+        count: breakCount,
+        handleDecrease: () => this.handleLengthChange(-1, "break"),
+        handleIncrease: () => this.handleLengthChange(1, "break")
+      };
+  
+      const sessionProps = {
+        title: "Session",
+        count: sessionCount,
+        handleDecrease: () => this.handleLengthChange(-1, "session"),
+        handleIncrease: () => this.handleLengthChange(1, "session")
+      };
+  
     return (
       <div>
         <div>
